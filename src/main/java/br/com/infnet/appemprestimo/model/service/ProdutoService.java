@@ -14,11 +14,19 @@ public class ProdutoService {
 
 	@Autowired private IProdutoRepository produtoRepository;
 	
+	public void incluir(Produto produto) {
+		produtoRepository.save(produto);
+	}
+
 	public List<Produto> obterLista(){		
 		return (List<Produto>)produtoRepository.findAll(Sort.by(Sort.Direction.ASC, "descricao"));
 	}
 	
 	public void excluir(Integer id) {
 		produtoRepository.deleteById(id);
+	}
+
+	public Produto obterPorId(Integer id) {
+		return produtoRepository.findById(id).orElse(null);
 	}
 }

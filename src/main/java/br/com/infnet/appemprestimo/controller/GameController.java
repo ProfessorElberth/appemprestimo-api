@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,17 +29,5 @@ public class GameController {
 	@GetMapping(value = "/game/{id}")
 	public Game obterPorId(@PathVariable Integer id) {
 		return gameService.obterPorId(id);
-	}
-
-	@ApiOperation(value = "Cadastrar um novo game")
-	@PostMapping(value = "/game/incluir")
-	public void incluir(@RequestBody Game game) {
-		gameService.incluir(game);
-	}
-
-	@ApiOperation(value = "Remover um game existente")
-	@GetMapping(value = "/game/{id}/excluir")
-	public void excluir(@PathVariable Integer id) {
-		gameService.excluir(id);
 	}
 }

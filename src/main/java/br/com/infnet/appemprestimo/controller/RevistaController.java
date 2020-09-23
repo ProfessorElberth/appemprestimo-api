@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,17 +28,5 @@ public class RevistaController {
 	@GetMapping(value = "/revista/{id}")
 	public Revista obterPorId(@PathVariable Integer id) {
 		return revistaService.obterPorId(id);
-	}
-
-	@ApiOperation(value = "Cadastrar uma nova revista")
-	@PostMapping(value = "/revista/incluir")
-	public void incluir(@RequestBody Revista revista) {
-		revistaService.incluir(revista);
-	}
-
-	@ApiOperation(value = "Remover uma revista existente")
-	@GetMapping(value = "/revista/{id}/excluir")
-	public void excluir(@PathVariable Integer id) {
-		revistaService.excluir(id);
 	}
 }

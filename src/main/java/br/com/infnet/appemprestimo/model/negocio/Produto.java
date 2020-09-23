@@ -12,8 +12,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "TProduto")
@@ -21,14 +23,17 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(
 		use = JsonTypeInfo.Id.NAME,
 		include = JsonTypeInfo.As.PROPERTY,
-		property = "tipo"
+		property = "tipoProduto"
 		)
 @JsonSubTypes({
-	@JsonSubTypes.Type(value = Game.class, name = "Game"),
-	@JsonSubTypes.Type(value = Livro.class, name = "Livro"),
-	@JsonSubTypes.Type(value = Revista.class, name = "Revista")
+	@JsonSubTypes.Type(value = Game.class, name = "G"),
+	@JsonSubTypes.Type(value = Livro.class, name = "L"),
+	@JsonSubTypes.Type(value = Revista.class, name = "R")
 })
-public class Produto {
+@JsonIdentityInfo(
+		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+		  property = "id")
+public abstract class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
