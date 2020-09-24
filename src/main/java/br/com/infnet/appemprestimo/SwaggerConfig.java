@@ -26,7 +26,7 @@ public class SwaggerConfig {
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
 		.select()
-		.apis(RequestHandlerSelectors.basePackage("br.com.infnet.appescola.controller"))
+		.apis(RequestHandlerSelectors.basePackage("br.com.infnet.appemprestimo.controller"))
 		.paths(PathSelectors.any())
 		.build()
 		.useDefaultResponseMessages(false)
@@ -36,8 +36,8 @@ public class SwaggerConfig {
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("AppEscola")
-				.description("Sistema para gestão escolar")
+				.title("AppEmprestimo")
+				.description("Sistema de gestão de empréstimos")
 				.version("1.0.0")
 				.contact(new Contact("Elberth Moraes", "infnet.edu.br", "elberth.moraes@prof.infnet.edu.br"))
 				.build();
